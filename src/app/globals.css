@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+@import "tailwindcss";
+
+:root {
+  /* Primary (Brand Identity) */
+  --primary-deep-green: #0b8f3a;
+  --primary-neon-green: #00c853;
+
+  /* Base (Background / Luxury Feel) */
+  --base-midnight-black: #0a0a0a;
+  --base-soft-black: #1c1c1c;
+
+  /* Neutral (Text / Clean Areas) */
+  --neutral-off-white: #f5f5f5;
+  --neutral-light-grey: #d9d9d9;
+
+  /* Accent (Premium Touch) */
+  --accent-muted-gold: #c6a75e;
+  --accent-bright-gold: #ffd700;
+
+  /* Extra */
+  --extra-mint-glow: #2ef2a0;
+  --extra-dark-forest: #14532d;
+
+  /* Theme mappings */
+  --background: var(--base-midnight-black);
+  --foreground: var(--neutral-off-white);
+  --primary: var(--primary-deep-green);
+  --primary-hover: var(--primary-neon-green);
+  --accent: var(--accent-muted-gold);
+  --accent-hover: var(--accent-bright-gold);
+  --muted: var(--base-soft-black);
+  --muted-foreground: var(--neutral-light-grey);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Roboto",
+    "Oxygen",
+    "Ubuntu",
+    "Cantarell",
+    "Fira Sans",
+    "Droid Sans",
+    "Helvetica Neue",
+    sans-serif;
+}
+
+/* Marquee animation for footer ticker */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 20s linear infinite !important;
+}
+
+/* Additional fallback for direct div targeting */
+div.animate-marquee {
+  animation: marquee 20s linear infinite !important;
+}

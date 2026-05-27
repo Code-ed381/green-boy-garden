@@ -19,7 +19,7 @@ export const news: NewsItem[] = [
       "OliveTheBoy links up with Beeztrap KOTM, LAMI JNR & Pinto Black for a new anthem.",
     content: `OliveTheBoy returns with "Daashi (Caashi)", a collaboration featuring Beeztrap KOTM, LAMI JNR, and Pinto Black. The track blends infectious Afrobeats rhythms with raw lyricism, showcasing the depth of Ghana's new wave.
 
-Produced by [Producer Name], the record has already amassed 800K+ streams in its first week. The accompanying visual, directed by [Director Name], captures the energy of Accra's vibrant streets.
+Produced by BeatzVampire, the record has already amassed 800K+ streams in its first week. The accompanying visual, directed by Kofi Kay, captures the energy of Accra's vibrant streets.
 
 Stream "Daashi (Caashi)" on all major platforms now.`,
     image: "/olive/dashi.png",
@@ -32,7 +32,7 @@ Stream "Daashi (Caashi)" on all major platforms now.`,
     date: "15 MAY 2026",
     excerpt:
       "The breakout hit that defined an era reaches another major milestone.",
-    content: `"GoodSin" has officially surpassed 20 million streams across all platforms, cementing its place as one of the most-streamed Ghanaian songs of 2023. The track, produced by [Producer Name], was a defining moment in OliveTheBoy's career.
+    content: `"GoodSin" has officially surpassed 20 million streams across all platforms, cementing its place as one of the most-streamed Ghanaian songs of 2023. The track, produced by BeatzVampire, was a defining moment in OliveTheBoy's career.
 
 The song's success led to a remix featuring King Promise, Oxlade, and Reekado Banks, and opened doors for international recognition. Streams continue to grow steadily, with the track averaging over a million monthly listeners on Spotify alone.
 
@@ -97,7 +97,7 @@ The music video, shot in Accra, captures the electric chemistry between the two 
 "Avana" originally dropped in May 2023 and quickly became a cornerstone of OliveTheBoy's discography. The deluxe version pushed the project's total streams past 25 million, with "Asylum" alone crossing 10 million streams.
 
 The project's longevity speaks to the timeless quality of the songwriting and production.`,
-    image: "/olive/avana.png",
+    image: "/olive/asylum.png",
     category: "Milestone",
   },
 ];

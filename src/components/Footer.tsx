@@ -45,7 +45,7 @@ export default function Footer() {
                 href="/"
                 className="text-[18px] font-[family-name:var(--font-display)] text-[#3a3a2e] tracking-wide leading-none"
               >
-                olive.
+                olivetheboy.
               </Link>
               <span className="text-[10px] font-[family-name:var(--font-mono)] text-[#3a3a2e] uppercase tracking-[0.12em]">
                 Accra, Ghana

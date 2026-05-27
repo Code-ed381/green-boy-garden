@@ -1,292 +1,114 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
-import { releases, type Release } from "@/lib/releases";
-import MusicSplashScreen from "@/components/MusicSplashScreen";
-import HeroSection from "@/components/music/HeroSection";
-import DiscoveryControls from "@/components/music/DiscoveryControls";
+import { useMemo } from "react";
+import { releases, projects } from "@/lib/releases";
 import ReleaseCard from "@/components/music/ReleaseCard";
-import MiniPlayer from "@/components/music/MiniPlayer";
-import Visualizer from "@/components/music/Visualizer";
-import StatPills from "@/components/music/StatPills";
-
-interface FilterState {
-  search: string;
-  artist: string;
-  genre: string;
-  type: string;
-  year: string;
-  explicit: boolean;
-  sortBy: string;
-}
+import ProjectCard from "@/components/music/ProjectCard";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 export default function MusicPage() {
-  const [currentTrack, setCurrentTrack] = useState<Release | null>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [showSplash, setShowSplash] = useState(true);
-  const [queue, setQueue] = useState<Release[]>([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [filters, setFilters] = useState<FilterState>({
-    search: "",
-    artist: "All",
-    genre: "All",
-    type: "All",
-    year: "All",
-    explicit: false,
-    sortBy: "popular",
-  });
+  useScrollReveal();
 
-  // Handle splash screen completion
-  const handleSplashComplete = () => {
-    setShowSplash(false);
-  };
+  const featuredRelease = useMemo(
+    () => releases.find((r) => r.featured) || releases[0],
+    []
+  );
 
-  // Get featured release (first featured or first release)
-  const featuredRelease = useMemo(() => {
-    return releases.find((r) => r.featured) || releases[0];
-  }, []);
+  const singleReleases = useMemo(
+    () => releases.filter((r) => r.role === "primary" && r.id !== featuredRelease.id),
+    [featuredRelease]
+  );
 
-  // Filter and sort releases
-  const filteredReleases = useMemo(() => {
-    let filtered = releases.filter((release) => {
-      // Search filter
-      if (filters.search) {
-        const searchLower = filters.search.toLowerCase();
-        if (
-          !release.title.toLowerCase().includes(searchLower) &&
-          !release.artist.toLowerCase().includes(searchLower) &&
-          !release.genre?.toLowerCase().includes(searchLower)
-        ) {
-          return false;
-        }
-      }
+  const featuredOn = useMemo(
+    () => releases.filter((r) => r.role === "feature"),
+    []
+  );
 
-      // Artist filter
-      if (filters.artist !== "All" && release.artist !== filters.artist) {
-        return false;
-      }
-
-      // Genre filter
-      if (filters.genre !== "All" && release.genre !== filters.genre) {
-        return false;
-      }
-
-      // Type filter
-      if (filters.type !== "All" && release.type !== filters.type) {
-        return false;
-      }
-
-      // Year filter
-      if (filters.year !== "All" && release.year.toString() !== filters.year) {
-        return false;
-      }
-
-      // Explicit filter
-      if (filters.explicit && !release.explicit) {
-        return false;
-      }
-
-      return true;
-    });
-
-    // Sort releases
-    filtered.sort((a, b) => {
-      switch (filters.sortBy) {
-        case "popular":
-          // Sort by streams (convert to number for comparison)
-          const aStreams = parseFloat(a.streams.replace(/[^0-9.]/g, ""));
-          const bStreams = parseFloat(b.streams.replace(/[^0-9.]/g, ""));
-          return bStreams - aStreams;
-        case "newest":
-          return b.year - a.year;
-        case "oldest":
-          return a.year - b.year;
-        case "a-z":
-          return a.title.localeCompare(b.title);
-        case "z-a":
-          return b.title.localeCompare(a.title);
-        default:
-          return 0;
-      }
-    });
-
-    return filtered;
-  }, [filters]);
-
-  // Calculate stats for stat pills
-  const stats = useMemo(() => {
-    const totalStreams = releases.reduce((sum, release) => {
-      const streams = parseFloat(release.streams.replace(/[^0-9.]/g, ""));
-      return sum + streams;
-    }, 0);
-
-    const genreCount = releases.reduce(
-      (acc, release) => {
-        if (release.genre) {
-          acc[release.genre] = (acc[release.genre] || 0) + 1;
-        }
-        return acc;
-      },
-      {} as Record<string, number>,
-    );
-
-    const topGenre =
-      Object.entries(genreCount).sort(([, a], [, b]) => b - a)[0]?.[0] ||
-      "Afrobeats";
-    const uniqueArtists = new Set(releases.map((r) => r.artist)).size;
-
-    return {
-      totalReleases: releases.length,
-      totalStreams:
-        totalStreams >= 1000000
-          ? `${(totalStreams / 1000000).toFixed(1)}M+`
-          : `${Math.floor(totalStreams / 1000)}K+`,
-      topGenre,
-      totalArtists: uniqueArtists,
-    };
-  }, []);
-
-  // Play track
-  const playTrack = (release: Release) => {
-    setCurrentTrack(release);
-    setIsPlaying(true);
-
-    // Add to queue if not already there
-    if (!queue.find((r) => r.id === release.id)) {
-      setQueue([...queue, release]);
-    }
-  };
-
-  // Toggle play/pause
-  const togglePlayPause = () => {
-    if (currentTrack) {
-      setIsPlaying(!isPlaying);
-    }
-  };
-
-  // Add to queue
-  const addToQueue = (release: Release) => {
-    setQueue([...queue, release]);
-  };
-
-  // Previous track
-  const handlePrevious = () => {
-    if (currentIndex > 0) {
-      const newIndex = currentIndex - 1;
-      setCurrentIndex(newIndex);
-      setCurrentTrack(queue[newIndex]);
-      setIsPlaying(true);
-    }
-  };
-
-  // Next track
-  const handleNext = () => {
-    if (currentIndex < queue.length - 1) {
-      const newIndex = currentIndex + 1;
-      setCurrentIndex(newIndex);
-      setCurrentTrack(queue[newIndex]);
-      setIsPlaying(true);
-    }
-  };
-
-  // Update current index when track changes
-  useEffect(() => {
-    if (currentTrack) {
-      const index = queue.findIndex((r) => r.id === currentTrack.id);
-      if (index !== -1) {
-        setCurrentIndex(index);
-      }
-    }
-  }, [currentTrack, queue]);
+  const totalItems = releases.length;
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a]">
-      {/* Splash Screen */}
-      {showSplash && <MusicSplashScreen onComplete={handleSplashComplete} />}
+    <div className="min-h-screen bg-[#0d0d0d] pt-16 lg:pt-20">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16 lg:py-24">
+        {/* Header */}
+        <div data-reveal className="mb-16">
+          <p className="text-[10px] font-[family-name:var(--font-mono)] text-[#7aad3a] uppercase tracking-[0.15em] mb-4">
+            discography
+          </p>
+          <h1
+            className="text-[48px] lg:text-[80px] font-[family-name:var(--font-display)] text-[#f0ede6] leading-[0.9] tracking-[-0.02em]"
+            style={{ fontFeatureSettings: '"ss01", "cv01"' }}
+          >
+            Music
+          </h1>
+          <p className="mt-3 text-[11px] font-[family-name:var(--font-mono)] text-[#6b6b5e] uppercase tracking-[0.15em]">
+            {totalItems} item{totalItems !== 1 ? "s" : ""}
+          </p>
+        </div>
 
-      {/* Main Content */}
-      <main className="pb-20">
-        <div className="p-6 lg:p-12 xl:p-16">
-          {/* Hero Section */}
-          <HeroSection featuredRelease={featuredRelease} onPlay={playTrack} />
-
-          {/* Visualizer */}
-          <div className="h-16 mb-8">
-            <Visualizer isPlaying={isPlaying} />
+        {/* Featured release */}
+        <div data-reveal className="mb-16" style={{ transitionDelay: "0.1s" }}>
+          <p className="text-[10px] font-[family-name:var(--font-mono)] text-[#3a3a2e] uppercase tracking-[0.12em] mb-4">
+            featured
+          </p>
+          <div className="grid grid-cols-1 lg:grid-cols-2">
+            <ReleaseCard release={featuredRelease} />
           </div>
+        </div>
 
-          {/* Stat Pills */}
-          <StatPills
-            totalReleases={stats.totalReleases}
-            totalStreams={stats.totalStreams}
-            topGenre={stats.topGenre}
-            totalArtists={stats.totalArtists}
-          />
-
-          {/* Discovery Controls */}
-          <DiscoveryControls
-            filters={filters}
-            onFiltersChange={setFilters}
-            resultCount={filteredReleases.length}
-          />
-
-          {/* Release Grid */}
-          {filteredReleases.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {filteredReleases.map((release) => (
-                <ReleaseCard
-                  key={release.id}
-                  release={release}
-                  onPlay={playTrack}
-                  onPause={togglePlayPause}
-                  isActive={currentTrack?.id === release.id}
-                  isPlaying={isPlaying && currentTrack?.id === release.id}
-                  onAddToQueue={addToQueue}
-                />
+        {/* Projects (EPs) */}
+        {projects.length > 0 && (
+          <div className="mb-16">
+            <div data-reveal className="mb-6" style={{ transitionDelay: "0.2s" }}>
+              <p className="text-[10px] font-[family-name:var(--font-mono)] text-[#7aad3a] uppercase tracking-[0.15em]">
+                EPs & projects
+              </p>
+            </div>
+            <div className="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-6">
+              {projects.map((project, i) => (
+                <div key={project.id} data-reveal style={{ transitionDelay: `${0.3 + i * 0.1}s` }}>
+                  <ProjectCard project={project} />
+                </div>
               ))}
             </div>
-          ) : (
-            <div className="text-center py-20">
-              <div className="text-6xl mb-4">🎵</div>
-              <h3 className="text-xl font-semibold text-[#f0f0ec] mb-2">
-                No releases found
-              </h3>
-              <p className="text-[#888] mb-6">
-                Try adjusting your filters or search terms
-              </p>
-              <button
-                onClick={() =>
-                  setFilters({
-                    search: "",
-                    artist: "All",
-                    genre: "All",
-                    type: "All",
-                    year: "All",
-                    explicit: false,
-                    sortBy: "popular",
-                  })
-                }
-                className="px-6 py-2 bg-[#7aad3a] text-[#0a0a0a] rounded-full hover:bg-[#8abd4a] transition-colors"
-              >
-                Clear Filters
-              </button>
-            </div>
-          )}
-        </div>
-      </main>
+          </div>
+        )}
 
-      {/* Mini Player */}
-      {currentTrack && (
-        <MiniPlayer
-          track={currentTrack}
-          isPlaying={isPlaying}
-          onTogglePlayPause={togglePlayPause}
-          onPrevious={handlePrevious}
-          onNext={handleNext}
-          queue={queue}
-          currentIndex={currentIndex}
-        />
-      )}
+        {/* Releases */}
+        {singleReleases.length > 0 && (
+          <div className="mb-16">
+            <div data-reveal className="mb-6" style={{ transitionDelay: `${0.3 + projects.length * 0.1}s` }}>
+              <p className="text-[10px] font-[family-name:var(--font-mono)] text-[#7aad3a] uppercase tracking-[0.15em]">
+                releases
+              </p>
+            </div>
+            <div className="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-6">
+              {singleReleases.map((release, i) => (
+                <div key={release.id} data-reveal style={{ transitionDelay: `${0.4 + (projects.length + i) * 0.1}s` }}>
+                  <ReleaseCard release={release} />
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Featured on */}
+        {featuredOn.length > 0 && (
+          <div>
+            <div data-reveal className="mb-6" style={{ transitionDelay: `${0.4 + (projects.length + singleReleases.length) * 0.1}s` }}>
+              <p className="text-[10px] font-[family-name:var(--font-mono)] text-[#c8f06a] uppercase tracking-[0.15em]">
+                featured on
+              </p>
+            </div>
+            <div className="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-6">
+              {featuredOn.map((release, i) => (
+                <div key={release.id} data-reveal style={{ transitionDelay: `${0.5 + (projects.length + singleReleases.length + i) * 0.1}s` }}>
+                  <ReleaseCard release={release} />
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

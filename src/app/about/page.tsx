@@ -108,7 +108,7 @@ export default function AboutPage() {
             <div className="group">
               <div className="relative aspect-[4/3] overflow-hidden">
                 <Image
-                  src="/olive/award2023.jpg"
+                  src="/olive/award2023.JPG"
                   alt="TGMA 2023 — Afrobeats Song of the Year"
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"

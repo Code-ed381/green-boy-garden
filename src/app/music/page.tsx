@@ -65,7 +65,7 @@ export default function MusicPage() {
             </div>
             <div className="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-6">
               {projects.map((project, i) => (
-                <div key={project.id} data-reveal style={{ transitionDelay: `${0.3 + i * 0.1}s` }}>
+                <div key={project.id} data-reveal style={{ transitionDelay: `${0.3 + i * 0.05}s` }}>
                   <ProjectCard project={project} />
                 </div>
               ))}
@@ -76,14 +76,14 @@ export default function MusicPage() {
         {/* Releases */}
         {singleReleases.length > 0 && (
           <div className="mb-16">
-            <div data-reveal className="mb-6" style={{ transitionDelay: `${0.3 + projects.length * 0.1}s` }}>
+            <div data-reveal className="mb-6" style={{ transitionDelay: `${0.3 + projects.length * 0.05}s` }}>
               <p className="text-[10px] font-[family-name:var(--font-mono)] text-[#7aad3a] uppercase tracking-[0.15em]">
                 releases
               </p>
             </div>
             <div className="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-6">
               {singleReleases.map((release, i) => (
-                <div key={release.id} data-reveal style={{ transitionDelay: `${0.4 + (projects.length + i) * 0.1}s` }}>
+                <div key={release.id} data-reveal style={{ transitionDelay: `${0.4 + (projects.length + i) * 0.05}s` }}>
                   <ReleaseCard release={release} />
                 </div>
               ))}
@@ -94,14 +94,14 @@ export default function MusicPage() {
         {/* Featured on */}
         {featuredOn.length > 0 && (
           <div>
-            <div data-reveal className="mb-6" style={{ transitionDelay: `${0.4 + (projects.length + singleReleases.length) * 0.1}s` }}>
+            <div data-reveal className="mb-6" style={{ transitionDelay: `${0.4 + (projects.length + singleReleases.length) * 0.05}s` }}>
               <p className="text-[10px] font-[family-name:var(--font-mono)] text-[#c8f06a] uppercase tracking-[0.15em]">
                 featured on
               </p>
             </div>
             <div className="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-6">
               {featuredOn.map((release, i) => (
-                <div key={release.id} data-reveal style={{ transitionDelay: `${0.5 + (projects.length + singleReleases.length + i) * 0.1}s` }}>
+                <div key={release.id} data-reveal style={{ transitionDelay: `${0.5 + (projects.length + singleReleases.length + i) * 0.05}s` }}>
                   <ReleaseCard release={release} />
                 </div>
               ))}

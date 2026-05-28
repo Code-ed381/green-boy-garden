@@ -1,14 +1,26 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export function CustomCursor() {
   const dot = useRef<HTMLDivElement>(null);
   const mouse = useRef({ x: 0, y: 0 });
   const pos = useRef({ x: 0, y: 0 });
   const rafId = useRef<number>(0);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    const checkVisibility = () => {
+      setIsVisible(window.matchMedia("(hover: hover) and (pointer: fine)").matches && window.innerWidth >= 768);
+    };
+    checkVisibility();
+    window.addEventListener("resize", checkVisibility);
+    return () => window.removeEventListener("resize", checkVisibility);
+  }, []);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
     const onMove = (e: MouseEvent) => {
       mouse.current.x = e.clientX;
       mouse.current.y = e.clientY;
@@ -59,7 +71,9 @@ export function CustomCursor() {
       });
       cancelAnimationFrame(rafId.current);
     };
-  }, []);
+  }, [isVisible]);
+
+  if (!isVisible) return null;
 
   return (
     <div

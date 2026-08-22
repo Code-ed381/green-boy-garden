@@ -4,6 +4,10 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { CustomCursor } from "@/components/CustomCursor";
+import { UnderConstruction } from "@/components/UnderConstruction";
+
+const underConstruction =
+  process.env.NEXT_PUBLIC_UNDER_CONSTRUCTION === "true";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -46,10 +50,11 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-[#0d0d0d]">
         <div className="grain-overlay" />
-        <CustomCursor />
-        <Navbar />
+        {!underConstruction && <CustomCursor />}
+        {!underConstruction && <Navbar />}
         <main className="flex-1">{children}</main>
-        <Footer />
+        {!underConstruction && <Footer />}
+        {underConstruction && <UnderConstruction />}
       </body>
     </html>
   );

@@ -5,6 +5,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { releases } from "@/lib/releases";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { EventModal } from "@/components/EventModal";
+import { EventCountdown } from "@/components/EventCountdown";
 
 export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -29,6 +31,8 @@ export default function Home() {
 
   return (
     <>
+      <EventModal />
+
       {/* HERO */}
       <section
         ref={heroRef}
@@ -146,8 +150,10 @@ export default function Home() {
         </div>
       </section>
 
+      <EventCountdown />
+
       {/* About preview section */}
-      <section className="py-24 lg:py-32 px-6 lg:px-12 max-w-7xl mx-auto">
+      <section className="py-24 lg:py-32 px-6 lg:px-12 max-w-7xl mx-auto border-t border-[#1e1e1e]">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
           <div data-reveal>
             <div className="relative aspect-[4/5] overflow-hidden rounded-sm">

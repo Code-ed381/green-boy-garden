@@ -51,24 +51,31 @@ export function CustomCursor() {
       rafId.current = requestAnimationFrame(tick);
     };
 
-    window.addEventListener("mousemove", onMove);
+    const interactiveSelector =
+      "a, button, [role='button'], input, textarea, select, label, [data-cursor-hover]";
 
-    const interactiveElements = document.querySelectorAll(
-      "a, button, [role='button'], input, textarea, select, [data-cursor-hover]"
-    );
-    interactiveElements.forEach((el) => {
-      el.addEventListener("mouseenter", onHoverIn);
-      el.addEventListener("mouseleave", onHoverOut);
-    });
+    const isInteractive = (node: EventTarget | null) =>
+      node instanceof Element && !!node.closest(interactiveSelector);
+
+    const onMouseOver = (e: MouseEvent) => {
+      if (isInteractive(e.target)) onHoverIn();
+    };
+
+    const onMouseOut = (e: MouseEvent) => {
+      if (isInteractive(e.relatedTarget)) return;
+      onHoverOut();
+    };
+
+    window.addEventListener("mousemove", onMove);
+    document.addEventListener("mouseover", onMouseOver);
+    document.addEventListener("mouseout", onMouseOut);
 
     tick();
 
     return () => {
       window.removeEventListener("mousemove", onMove);
-      interactiveElements.forEach((el) => {
-        el.removeEventListener("mouseenter", onHoverIn);
-        el.removeEventListener("mouseleave", onHoverOut);
-      });
+      document.removeEventListener("mouseover", onMouseOver);
+      document.removeEventListener("mouseout", onMouseOut);
       cancelAnimationFrame(rafId.current);
     };
   }, [isVisible]);

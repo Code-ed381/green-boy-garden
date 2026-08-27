@@ -56,8 +56,8 @@ export default function AboutPage() {
           <div>
             <dl className="space-y-6">
               {[
-                { label: "born", value: "Accra, Ghana" },
-                { label: "sound", value: "Afrobeats · R&B · alt" },
+                { label: "born", value: "Kumasi, Ghana" },
+                { label: "sound", value: "Afrobeats · R&B · " },
                 { label: "active", value: "2021 - Present" },
               ].map((fact) => (
                 <div key={fact.label} className="flex items-baseline gap-4">

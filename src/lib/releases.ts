@@ -47,6 +47,30 @@ export const releases: Release[] = [
   // ─── 2026 SINGLES ────────────────────────────────────────────────────────────
   {
     id: "1",
+    title: "Stopit",
+    artist: "OliveTheBoy",
+    featuring: "Medikal",
+    type: "SINGLE",
+    year: 2026,
+    streams: "800K+",
+    coverColor: "#0d1a12",
+    initials: "OTB",
+    coverImage: "/olive/stopit.png",
+    role: "primary",
+    genre: "Afrobeats",
+    duration: "3:10",
+    featured: true,
+    explicit: false,
+    spotifyUrl:
+      "https://open.spotify.com/track/6JBxA9ofuX7OIY4ghOvuIY?si=d7a5cd388e944f54",
+    appleUrl: "https://music.apple.com/us/song/stopit-feat-medikal/6788411506",
+    youtubeUrl: "https://youtu.be/kvKefQooCKQ?si=EHxTat7hzAlG-xb-",
+    audiomackUrl: "https://audiomack.com/olivetheboy_/song/stopit",
+    previewUrl:
+      "https://open.spotify.com/track/6JBxA9ofuX7OIY4ghOvuIY?si=d7a5cd388e944f54",
+  },
+  {
+    id: "2",
     title: "Daashi (Caashi)",
     artist: "OliveTheBoy",
     featuring: "Beeztrap KOTM, LAMI JNR & Pinto Black",
@@ -61,15 +85,18 @@ export const releases: Release[] = [
     duration: "3:10",
     featured: true,
     explicit: false,
-    spotifyUrl: "https://open.spotify.com/track/6cMPtuGUIOgmzmeejw7xXp?si=c5a98ee6ed464d27",
-    appleUrl: "https://music.apple.com/us/song/daashi-caashi-feat-beeztrap-kotm-lami-jnr-pinto-black/6768432102",
+    spotifyUrl:
+      "https://open.spotify.com/track/6cMPtuGUIOgmzmeejw7xXp?si=c5a98ee6ed464d27",
+    appleUrl:
+      "https://music.apple.com/us/song/daashi-caashi-feat-beeztrap-kotm-lami-jnr-pinto-black/6768432102",
     youtubeUrl: "https://www.youtube.com/watch?v=de89S8x2ywU",
     audiomackUrl: "https://audiomack.com/olivetheboy_/song/daashi-caashi",
-    previewUrl: "https://open.spotify.com/track/6cMPtuGUIOgmzmeejw7xXp?si=c5a98ee6ed464d27",
+    previewUrl:
+      "https://open.spotify.com/track/6cMPtuGUIOgmzmeejw7xXp?si=c5a98ee6ed464d27",
   },
 
   // ─── 2025 EP — OUT OF THE BLUE ──────────────────────────────────────────────
-    {
+  {
     id: "90",
     title: "Lala",
     artist: "OliveTheBoy",
@@ -84,13 +111,15 @@ export const releases: Release[] = [
     duration: "2:37",
     featured: false,
     explicit: false,
-    spotifyUrl: "https://open.spotify.com/track/7a7g1jbp3bgY5Nijlgfr6Q?si=76eeeeff18ee4d1f",
+    spotifyUrl:
+      "https://open.spotify.com/track/7a7g1jbp3bgY5Nijlgfr6Q?si=76eeeeff18ee4d1f",
     appleUrl: "https://music.apple.com/us/song/lala/1882847251",
     youtubeUrl: "https://youtu.be/GCLoSSkC9v8?si=iARXWjBnOoDH7IDG",
     audiomackUrl: "https://audiomack.com/olivetheboy_/album/out-of-the-blue-1",
-    previewUrl: "https://open.spotify.com/track/7a7g1jbp3bgY5Nijlgfr6Q?si=76eeeeff18ee4d1f",
+    previewUrl:
+      "https://open.spotify.com/track/7a7g1jbp3bgY5Nijlgfr6Q?si=76eeeeff18ee4d1f",
   },
-    {
+  {
     id: "12",
     title: "Spidomita",
     artist: "OliveTheBoy",
@@ -267,7 +296,8 @@ export const releases: Release[] = [
     appleUrl: "#",
     youtubeUrl: "#",
     audiomackUrl: "https://audiomack.com/olivetheboy_/album/out-of-the-blue-1",
-    previewUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-11.mp3",
+    previewUrl:
+      "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-11.mp3",
   },
 
   {
@@ -290,9 +320,10 @@ export const releases: Release[] = [
     appleUrl: "#",
     youtubeUrl: "#",
     audiomackUrl: "https://audiomack.com/olivetheboy_/album/out-of-the-blue-1",
-    previewUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
+    previewUrl:
+      "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
   },
-  
+
   // ─── 2025 SINGLES ────────────────────────────────────────────────────────────
   {
     id: "13",
@@ -313,7 +344,8 @@ export const releases: Release[] = [
     appleUrl: "#",
     youtubeUrl: "#",
     audiomackUrl: "#",
-    previewUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-13.mp3",
+    previewUrl:
+      "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-13.mp3",
   },
 
   // ─── 2024 EP — AVANA DELUXE ──────────────────────────────────────────────────
@@ -337,7 +369,8 @@ export const releases: Release[] = [
     appleUrl: "#",
     youtubeUrl: "#",
     audiomackUrl: "#",
-    previewUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-14.mp3",
+    previewUrl:
+      "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-14.mp3",
   },
   {
     id: "15",
@@ -359,7 +392,8 @@ export const releases: Release[] = [
     appleUrl: "#",
     youtubeUrl: "#",
     audiomackUrl: "#",
-    previewUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-15.mp3",
+    previewUrl:
+      "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-15.mp3",
   },
   {
     id: "16",
@@ -382,7 +416,8 @@ export const releases: Release[] = [
     appleUrl: "#",
     youtubeUrl: "#",
     audiomackUrl: "#",
-    previewUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-16.mp3",
+    previewUrl:
+      "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-16.mp3",
   },
 
   // ─── 2023 EP — AVANA ────────────────────────────────────────────────────────
@@ -406,9 +441,10 @@ export const releases: Release[] = [
     appleUrl: "#",
     youtubeUrl: "#",
     audiomackUrl: "#",
-    previewUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-17.mp3",
+    previewUrl:
+      "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-17.mp3",
   },
-    {
+  {
     id: "20",
     title: "360",
     artist: "OliveTheBoy",
@@ -428,7 +464,8 @@ export const releases: Release[] = [
     appleUrl: "#",
     youtubeUrl: "#",
     audiomackUrl: "#",
-    previewUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-20.mp3",
+    previewUrl:
+      "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-20.mp3",
   },
   {
     id: "21",
@@ -472,7 +509,8 @@ export const releases: Release[] = [
     appleUrl: "#",
     youtubeUrl: "#",
     audiomackUrl: "#",
-    previewUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-19.mp3",
+    previewUrl:
+      "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-19.mp3",
   },
   {
     id: "18",
@@ -494,7 +532,8 @@ export const releases: Release[] = [
     appleUrl: "#",
     youtubeUrl: "#",
     audiomackUrl: "#",
-    previewUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-18.mp3",
+    previewUrl:
+      "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-18.mp3",
   },
 
   {
@@ -565,7 +604,7 @@ export const releases: Release[] = [
     audiomackUrl: "#",
     previewUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
   },
-    {
+  {
     id: "24",
     title: "Saturday",
     artist: "OliveTheBoy",
@@ -587,7 +626,7 @@ export const releases: Release[] = [
     audiomackUrl: "#",
     previewUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
   },
-    {
+  {
     id: "24",
     title: "Boys Boys",
     artist: "OliveTheBoy",
@@ -654,8 +693,8 @@ export const releases: Release[] = [
     youtubeUrl: "",
     audiomackUrl: "",
     previewUrl: "",
-    
-  },  {
+  },
+  {
     id: "29",
     title: "Akua Broni",
     artist: "Moon Byni",
@@ -698,9 +737,8 @@ export const releases: Release[] = [
     youtubeUrl: "",
     audiomackUrl: "",
     previewUrl: "",
-    
   },
-    {
+  {
     id: "f9",
     title: "Too Bad",
     artist: "Medikal",
@@ -721,7 +759,6 @@ export const releases: Release[] = [
     youtubeUrl: "",
     audiomackUrl: "",
     previewUrl: "",
-    
   },
 
   {
@@ -745,9 +782,8 @@ export const releases: Release[] = [
     youtubeUrl: "",
     audiomackUrl: "https://audiomack.com/kingpromise/song/favourite-story",
     previewUrl: "",
-    
   },
-    {
+  {
     id: "f90",
     title: "YOU & I",
     artist: "Sarkodie",
@@ -768,9 +804,8 @@ export const releases: Release[] = [
     youtubeUrl: "",
     audiomackUrl: "https://audiomack.com/kingpromise/song/favourite-story",
     previewUrl: "",
-    
   },
-    {
+  {
     id: "f2",
     title: "OMG",
     artist: "Mr Drew",
@@ -791,7 +826,6 @@ export const releases: Release[] = [
     youtubeUrl: "",
     audiomackUrl: "",
     previewUrl: "",
-    
   },
   {
     id: "f6",
@@ -814,7 +848,6 @@ export const releases: Release[] = [
     youtubeUrl: "",
     audiomackUrl: "",
     previewUrl: "",
-    
   },
   {
     id: "f7",
@@ -837,7 +870,6 @@ export const releases: Release[] = [
     youtubeUrl: "",
     audiomackUrl: "",
     previewUrl: "",
-    
   },
   {
     id: "f8",
@@ -860,7 +892,6 @@ export const releases: Release[] = [
     youtubeUrl: "",
     audiomackUrl: "",
     previewUrl: "",
-    
   },
 
   {
@@ -884,7 +915,6 @@ export const releases: Release[] = [
     youtubeUrl: "",
     audiomackUrl: "",
     previewUrl: "",
-
   },
   {
     id: "f11",
@@ -907,7 +937,6 @@ export const releases: Release[] = [
     youtubeUrl: "",
     audiomackUrl: "",
     previewUrl: "",
-
   },
   {
     id: "f12",
@@ -930,7 +959,6 @@ export const releases: Release[] = [
     youtubeUrl: "",
     audiomackUrl: "",
     previewUrl: "",
-
   },
   {
     id: "f13",
@@ -953,7 +981,6 @@ export const releases: Release[] = [
     youtubeUrl: "",
     audiomackUrl: "",
     previewUrl: "",
-
   },
   {
     id: "f14",
@@ -976,10 +1003,9 @@ export const releases: Release[] = [
     youtubeUrl: "",
     audiomackUrl: "",
     previewUrl: "",
-
   },
 
-    {
+  {
     id: "f4",
     title: "Shut Up (Pretense)",
     artist: "Quamina MP",
@@ -1000,7 +1026,6 @@ export const releases: Release[] = [
     youtubeUrl: "",
     audiomackUrl: "",
     previewUrl: "",
-    
   },
 ];
 

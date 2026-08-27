@@ -115,7 +115,7 @@ export default function Home() {
                   className="font-[family-name:var(--font-mono)]"
                 >
                   <textPath href="#badge-circle" startOffset="0%">
-                    ● LATEST DROP ● LATEST DROP
+                    ● GREENGO ● GREENGO
                   </textPath>
                 </text>
               </svg>

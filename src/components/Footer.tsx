@@ -4,16 +4,36 @@ import { Camera, Radio, Video, Music, Play } from "lucide-react";
 import Link from "next/link";
 
 const socialLinks = [
-  { name: "Instagram", href: "#", icon: Camera },
-  { name: "Spotify", href: "#", icon: Radio },
-  { name: "YouTube", href: "#", icon: Video },
-  { name: "Apple Music", href: "#", icon: Music },
-  { name: "TikTok", href: "#", icon: Play },
+  {
+    name: "Instagram",
+    href: "https://www.instagram.com/olivetheboy?igsi=MTd1a3dkMTFxNnRpcg==",
+    icon: Camera,
+  },
+  {
+    name: "Spotify",
+    href: "https://open.spotify.com/artist/6yCYm86uDrfUteHNs6zcg1?si=CJ8Ea7zuQaycy3j_SA0j-Q",
+    icon: Radio,
+  },
+  {
+    name: "YouTube",
+    href: "https://youtube.com/@olivetheboyy?si=SJgpeVtzrpfa8T9-",
+    icon: Video,
+  },
+  {
+    name: "Apple Music",
+    href: "https://music.apple.com/us/artist/olivetheboy/1573112719",
+    icon: Music,
+  },
+  {
+    name: "TikTok",
+    href: "https://www.tiktok.com/@olivetheboy_?_r=1&_t=ZS-99EvEXUkxaW",
+    icon: Play,
+  },
 ];
 
 const tickerItems = [
-  "olivetheboy — new music coming soon",
-  "olivetheboy — producer · songwriter · Accra, Ghana",
+  "olivetheboy — new music out STOPIT ft. MDK",
+  "olivetheboy — singer · songwriter · performer · Accra, Ghana",
   "↓ press play — latest drop out now",
   "the music speaks. everything else is noise.",
 ];

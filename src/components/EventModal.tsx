@@ -125,7 +125,7 @@ export function EventModal() {
         aria-labelledby={titleId}
         className="relative z-10 w-full max-w-md overflow-hidden rounded-sm bg-[#0d0d0d] shadow-[0_0_0_1px_#7aad3a]"
       >
-        <div className="relative aspect-square w-full">
+        <div className="relative aspect-[4/5] w-full">
           <Image
             src={featuredEvent.artwork}
             alt=""

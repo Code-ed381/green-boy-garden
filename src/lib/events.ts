@@ -14,12 +14,12 @@ export interface FeaturedEvent {
 export const featuredEvent: FeaturedEvent = {
   id: "live-accra-2026",
   title: "Live in Accra",
-  venue: "Venue TBA",
+  venue: "National Theatre",
   city: "Accra",
   country: "Ghana",
-  dateLabel: "12 SEP 2026",
-  startsAt: "2026-09-12T20:00:00+00:00",
-  artwork: "/olive/1.jpeg",
-  ticketUrl: "/shows",
+  dateLabel: "20 NOV 2026 · GATES 6PM · SHOW 8PM",
+  startsAt: "2026-11-20T20:00:00+00:00",
+  artwork: "/olive/OTB Live.JPG",
+  ticketUrl: "https://app.chaleapp.org/checkout/242",
   ctaLabel: "get tickets",
 };

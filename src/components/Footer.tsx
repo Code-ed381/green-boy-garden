@@ -36,7 +36,7 @@ const tickerItems = [
   "olivetheboy — singer · songwriter · performer · Accra, Ghana",
   "↓ press play — latest drop out now",
   "the music speaks. everything else is noise.",
-  "LIVE IN ACCRA — 20 NOV 2026 · NATIONAL THEATRE · GATES 6PM · GET TICKETS ↗",
+  "O'LIVE EXPERIENCE EARLY BIRD TICKETS — 20 NOV 2026 · NATIONAL THEATRE · GATES 6PM · GET TICKETS ↗",
 ];
 
 export default function Footer() {

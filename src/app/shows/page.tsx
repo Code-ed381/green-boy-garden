@@ -4,6 +4,7 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 interface Show {
   date: string;
+  name: string;
   venue: string;
   city: string;
   country: string;
@@ -14,6 +15,7 @@ interface Show {
 const shows: Show[] = [
   {
     date: "20 NOV 2026",
+    name: "O'live Experience Early Bird Tickets",
     venue: "National Theatre",
     city: "Accra",
     country: "Ghana",
@@ -55,24 +57,17 @@ export default function ShowsPage() {
                 </span>
               </div>
 
-              {/* Venue */}
+              {/* Event Name */}
               <div className="flex-1 min-w-0">
                 <h3
                   className="text-[24px] lg:text-[32px] font-[family-name:var(--font-display)] text-[#f0ede6] leading-none tracking-[-0.01em] group-hover:text-[#7aad3a] transition-colors"
                   style={{ fontFeatureSettings: '"ss01", "cv01"' }}
                 >
-                  {show.venue}
+                  {show.name}
                 </h3>
-                <p className="mt-1 text-[10px] font-[family-name:var(--font-mono)] text-[#3a3a2e] uppercase tracking-[0.12em]">
-                  {show.time}
+                <p className="mt-1 text-[10px] font-[family-name:var(--font-mono)] text-[#6b6b5e] uppercase tracking-[0.12em]">
+                  {show.venue} · {show.city}, {show.country} · {show.time}
                 </p>
-              </div>
-
-              {/* Location */}
-              <div className="hidden sm:block w-40 flex-shrink-0 text-right">
-                <span className="text-[10px] font-[family-name:var(--font-mono)] text-[#6b6b5e] uppercase tracking-[0.12em]">
-                  {show.city}, {show.country}
-                </span>
               </div>
 
               {/* Tickets link */}

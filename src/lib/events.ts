@@ -13,7 +13,7 @@ export interface FeaturedEvent {
 
 export const featuredEvent: FeaturedEvent = {
   id: "live-accra-2026",
-  title: "Live in Accra",
+  title: "O'live Experience Early Bird Tickets",
   venue: "National Theatre",
   city: "Accra",
   country: "Ghana",

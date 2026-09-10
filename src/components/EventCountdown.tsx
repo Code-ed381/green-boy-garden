@@ -78,7 +78,7 @@ export function EventCountdown() {
     >
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
         <div data-reveal>
-          <div className="relative aspect-square overflow-hidden rounded-sm max-w-md mx-auto lg:mx-0">
+          <div className="relative aspect-[4/5] overflow-hidden rounded-sm max-w-md mx-auto lg:mx-0">
             <Image
               src={featuredEvent.artwork}
               alt={`${featuredEvent.title} artwork`}

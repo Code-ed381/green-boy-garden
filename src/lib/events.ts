@@ -17,9 +17,9 @@ export const featuredEvent: FeaturedEvent = {
   venue: "National Theatre",
   city: "Accra",
   country: "Ghana",
-  dateLabel: "20 NOV 2026 · GATES 6PM · SHOW 8PM",
-  startsAt: "2026-11-20T20:00:00+00:00",
-  artwork: "/olive/OTB Live.JPG",
+  dateLabel: "20 NOV 2026 · GATES 6PM · SHOW 7PM",
+  startsAt: "2026-11-20T19:00:00+00:00",
+  artwork: "/olive/olive experience 3.jpg",
   ticketUrl: "https://app.chaleapp.org/checkout/242",
   ctaLabel: "get tickets",
 };

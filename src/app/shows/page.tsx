@@ -19,7 +19,7 @@ const shows: Show[] = [
     venue: "National Theatre",
     city: "Accra",
     country: "Ghana",
-    time: "Gates 6PM · Show 8PM",
+    time: "Gates 6PM · Show 7PM",
     ticketUrl: "https://app.chaleapp.org/checkout/242",
   },
 ];

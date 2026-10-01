@@ -1,6 +1,12 @@
 "use client";
 
-import { useCallback, useEffect, useId, useRef, useSyncExternalStore } from "react";
+import {
+  useCallback,
+  useEffect,
+  useId,
+  useRef,
+  useSyncExternalStore,
+} from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { X } from "lucide-react";
@@ -93,20 +99,30 @@ export function EventModal() {
   const ctaClassName =
     "inline-flex min-h-11 items-center justify-center px-8 py-3 bg-[#7aad3a] text-[#0d0d0d] text-[11px] font-[family-name:var(--font-mono)] uppercase tracking-[0.15em] rounded-sm hover:bg-[#c8f06a] transition-colors btn-press focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c8f06a]";
 
-  const cta = isInternalHref(featuredEvent.ticketUrl) ? (
-    <Link href={featuredEvent.ticketUrl} className={ctaClassName} onClick={dismiss}>
-      {featuredEvent.ctaLabel} ↗
-    </Link>
-  ) : (
-    <a
-      href={featuredEvent.ticketUrl}
-      className={ctaClassName}
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      {featuredEvent.ctaLabel} ↗
-    </a>
-  );
+  const showTicketButton =
+    !featuredEvent.earlyBirdSoldOut &&
+    featuredEvent.generalTicketsStatus === "available";
+
+  const cta = showTicketButton ? (
+    isInternalHref(featuredEvent.ticketUrl) ? (
+      <Link
+        href={featuredEvent.ticketUrl}
+        className={ctaClassName}
+        onClick={dismiss}
+      >
+        {featuredEvent.ctaLabel} ↗
+      </Link>
+    ) : (
+      <a
+        href={featuredEvent.ticketUrl}
+        className={ctaClassName}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {featuredEvent.ctaLabel} ↗
+      </a>
+    )
+  ) : null;
 
   return (
     <div
@@ -171,9 +187,15 @@ export function EventModal() {
           </h2>
 
           <p className="text-[11px] font-[family-name:var(--font-mono)] text-[#6b6b5e] uppercase tracking-[0.12em]">
-            {featuredEvent.dateLabel} · {featuredEvent.venue} · {featuredEvent.city}{" "}
-            / {featuredEvent.country}
+            {featuredEvent.dateLabel} · {featuredEvent.venue} ·{" "}
+            {featuredEvent.city} / {featuredEvent.country}
           </p>
+
+          {!showTicketButton && featuredEvent.generalTicketsMessage && (
+            <p className="text-[11px] font-[family-name:var(--font-mono)] text-[#7aad3a] uppercase tracking-[0.12em]">
+              {featuredEvent.generalTicketsMessage}
+            </p>
+          )}
 
           {cta}
         </div>

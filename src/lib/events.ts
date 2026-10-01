@@ -9,11 +9,14 @@ export interface FeaturedEvent {
   artwork: string;
   ticketUrl: string;
   ctaLabel: string;
+  earlyBirdSoldOut: boolean;
+  generalTicketsStatus: "available" | "coming-soon" | "sold-out";
+  generalTicketsMessage?: string;
 }
 
 export const featuredEvent: FeaturedEvent = {
   id: "live-accra-2026",
-  title: "O'live Experience Early Bird Tickets",
+  title: "O'live Experience 2026",
   venue: "National Theatre",
   city: "Accra",
   country: "Ghana",
@@ -22,4 +25,7 @@ export const featuredEvent: FeaturedEvent = {
   artwork: "/olive/olive experience 3.jpg",
   ticketUrl: "https://app.chaleapp.org/checkout/242",
   ctaLabel: "get tickets",
+  earlyBirdSoldOut: true,
+  generalTicketsStatus: "coming-soon",
+  generalTicketsMessage: "early bird sold out · general tickets coming soon",
 };

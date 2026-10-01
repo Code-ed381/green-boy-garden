@@ -10,17 +10,23 @@ interface Show {
   country: string;
   time: string;
   ticketUrl?: string;
+  earlyBirdSoldOut?: boolean;
+  generalTicketsStatus?: "available" | "coming-soon" | "sold-out";
+  generalTicketsMessage?: string;
 }
 
 const shows: Show[] = [
   {
     date: "20 NOV 2026",
-    name: "O'live Experience Early Bird Tickets",
+    name: "O'live Experience 2026",
     venue: "National Theatre",
     city: "Accra",
     country: "Ghana",
     time: "Gates 6PM · Show 7PM",
     ticketUrl: "https://app.chaleapp.org/checkout/242",
+    earlyBirdSoldOut: true,
+    generalTicketsStatus: "coming-soon",
+    generalTicketsMessage: "early bird sold out · general tickets coming soon",
   },
 ];
 
@@ -72,7 +78,9 @@ export default function ShowsPage() {
 
               {/* Tickets link */}
               <div className="flex-shrink-0">
-                {show.ticketUrl ? (
+                {show.ticketUrl &&
+                !show.earlyBirdSoldOut &&
+                show.generalTicketsStatus === "available" ? (
                   <a
                     href={show.ticketUrl}
                     target="_blank"
@@ -81,6 +89,10 @@ export default function ShowsPage() {
                   >
                     get tickets ↗
                   </a>
+                ) : show.generalTicketsMessage ? (
+                  <p className="text-[11px] font-[family-name:var(--font-mono)] text-[#7aad3a] uppercase tracking-[0.12em]">
+                    {show.generalTicketsMessage}
+                  </p>
                 ) : null}
               </div>
             </article>

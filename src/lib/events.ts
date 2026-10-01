@@ -4,6 +4,8 @@ export interface FeaturedEvent {
   venue: string;
   city: string;
   country: string;
+  date: string;
+  time: string;
   dateLabel: string;
   startsAt: string;
   artwork: string;
@@ -20,12 +22,15 @@ export const featuredEvent: FeaturedEvent = {
   venue: "National Theatre",
   city: "Accra",
   country: "Ghana",
+  date: "20 NOV 2026",
+  time: "Gates 6PM · Show 7PM",
   dateLabel: "20 NOV 2026 · GATES 6PM · SHOW 7PM",
   startsAt: "2026-11-20T19:00:00+00:00",
   artwork: "/olive/olive experience 3.jpg",
   ticketUrl: "https://app.chaleapp.org/checkout/242",
   ctaLabel: "get tickets",
   earlyBirdSoldOut: true,
-  generalTicketsStatus: "coming-soon",
-  generalTicketsMessage: "early bird sold out · general tickets coming soon",
+  generalTicketsStatus: "available",
 };
+
+export const shows: FeaturedEvent[] = [featuredEvent];

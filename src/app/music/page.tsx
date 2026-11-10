@@ -65,7 +65,7 @@ export default function MusicPage() {
             </div>
             <div className="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-6">
               {projects.map((project, i) => (
-                <div key={project.id} data-reveal style={{ transitionDelay: `${0.3 + i * 0.05}s` }}>
+                <div key={project.id} data-reveal style={{ transitionDelay: `${i * 0.02}s` }}>
                   <ProjectCard project={project} />
                 </div>
               ))}
@@ -83,7 +83,7 @@ export default function MusicPage() {
             </div>
             <div className="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-6">
               {singleReleases.map((release, i) => (
-                <div key={release.id} data-reveal style={{ transitionDelay: `${0.4 + (projects.length + i) * 0.05}s` }}>
+                <div key={release.id} data-reveal style={{ transitionDelay: `${(projects.length + i) * 0.02}s` }}>
                   <ReleaseCard release={release} />
                 </div>
               ))}
@@ -101,7 +101,7 @@ export default function MusicPage() {
             </div>
             <div className="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-6">
               {featuredOn.map((release, i) => (
-                <div key={release.id} data-reveal style={{ transitionDelay: `${0.5 + (projects.length + singleReleases.length + i) * 0.05}s` }}>
+                <div key={release.id} data-reveal style={{ transitionDelay: `${(projects.length + singleReleases.length + i) * 0.02}s` }}>
                   <ReleaseCard release={release} />
                 </div>
               ))}

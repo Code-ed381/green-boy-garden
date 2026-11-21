@@ -24,50 +24,59 @@ export default function ShowsPage() {
 
         {/* Show list */}
         <div className="space-y-1" data-reveal data-reveal-delay="2">
-          {shows.map((show) => (
-            <article
-              key={show.id}
-              className="group flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-8 py-6 px-4 -mx-4 rounded-sm hover:bg-[#1a1a1a]/50 transition-all duration-200"
-            >
-              {/* Date */}
-              <div className="w-28 flex-shrink-0">
-                <span className="text-[11px] font-[family-name:var(--font-mono)] text-[#6b6b5e] uppercase tracking-[0.12em]">
-                  {show.date}
-                </span>
-              </div>
+          {shows.map((show) => {
+            const isPastEvent = show.generalTicketsStatus === "sold-out";
+            return (
+              <article
+                key={show.id}
+                className={`group flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-8 py-6 px-4 -mx-4 rounded-sm transition-all duration-200 ${
+                  isPastEvent ? "opacity-40" : "hover:bg-[#1a1a1a]/50"
+                }`}
+              >
+                {/* Date */}
+                <div className="w-28 flex-shrink-0">
+                  <span className={`text-[11px] font-[family-name:var(--font-mono)] uppercase tracking-[0.12em] ${
+                    isPastEvent ? "text-[#3a3a2e] line-through" : "text-[#6b6b5e]"
+                  }`}>
+                    {show.date}
+                  </span>
+                </div>
 
-              {/* Event Name */}
-              <div className="flex-1 min-w-0">
-                <h3
-                  className="text-[24px] lg:text-[32px] font-[family-name:var(--font-display)] text-[#f0ede6] leading-none tracking-[-0.01em] group-hover:text-[#7aad3a] transition-colors"
-                  style={{ fontFeatureSettings: '"ss01", "cv01"' }}
-                >
-                  {show.title}
-                </h3>
-                <p className="mt-1 text-[10px] font-[family-name:var(--font-mono)] text-[#6b6b5e] uppercase tracking-[0.12em]">
-                  {show.venue} · {show.city}, {show.country} · {show.time}
-                </p>
-              </div>
-
-              {/* Tickets link */}
-              <div className="flex-shrink-0">
-                {show.ticketUrl && show.generalTicketsStatus === "available" ? (
-                  <a
-                    href={show.ticketUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex min-h-11 items-center justify-center px-8 py-3 bg-[#7aad3a] text-[#0d0d0d] text-[11px] font-[family-name:var(--font-mono)] uppercase tracking-[0.15em] rounded-sm hover:bg-[#c8f06a] transition-colors btn-press focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c8f06a]"
+                {/* Event Name */}
+                <div className="flex-1 min-w-0">
+                  <h3
+                    className={`text-[24px] lg:text-[32px] font-[family-name:var(--font-display)] leading-none tracking-[-0.01em] transition-colors ${
+                      isPastEvent ? "text-[#3a3a2e]" : "text-[#f0ede6] group-hover:text-[#7aad3a]"
+                    }`}
+                    style={{ fontFeatureSettings: '"ss01", "cv01"' }}
                   >
-                    get tickets ↗
-                  </a>
-                ) : show.generalTicketsMessage ? (
-                  <p className="text-[11px] font-[family-name:var(--font-mono)] text-[#7aad3a] uppercase tracking-[0.12em]">
-                    {show.generalTicketsMessage}
+                    {show.title}
+                  </h3>
+                  <p className="mt-1 text-[10px] font-[family-name:var(--font-mono)] text-[#6b6b5e] uppercase tracking-[0.12em]">
+                    {show.venue} · {show.city}, {show.country} · {show.time}
                   </p>
-                ) : null}
-              </div>
-            </article>
-          ))}
+                </div>
+
+                {/* Tickets link */}
+                <div className="flex-shrink-0">
+                  {show.ticketUrl && show.generalTicketsStatus === "available" ? (
+                    <a
+                      href={show.ticketUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex min-h-11 items-center justify-center px-8 py-3 bg-[#7aad3a] text-[#0d0d0d] text-[11px] font-[family-name:var(--font-mono)] uppercase tracking-[0.15em] rounded-sm hover:bg-[#c8f06a] transition-colors btn-press focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c8f06a]"
+                    >
+                      get tickets ↗
+                    </a>
+                  ) : show.generalTicketsMessage ? (
+                    <p className="text-[11px] font-[family-name:var(--font-mono)] text-[#7aad3a] uppercase tracking-[0.12em]">
+                      {show.generalTicketsMessage}
+                    </p>
+                  ) : null}
+                </div>
+              </article>
+            );
+          })}
         </div>
       </div>
     </div>

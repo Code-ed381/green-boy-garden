@@ -59,6 +59,8 @@ export function EventCountdown() {
   const showTicketButton =
     featuredEvent.generalTicketsStatus === "available";
 
+  const isPastEvent = !remaining && ready;
+
   const cta = showTicketButton ? (
     isInternalHref(featuredEvent.ticketUrl) ? (
       <Link href={featuredEvent.ticketUrl} className={ctaClassName}>
@@ -74,6 +76,10 @@ export function EventCountdown() {
         {featuredEvent.ctaLabel} ↗
       </a>
     )
+  ) : isPastEvent ? (
+    <Link href="/shows" className={ctaClassName}>
+      view all shows ↗
+    </Link>
   ) : null;
 
   return (
@@ -100,12 +106,19 @@ export function EventCountdown() {
                 mixBlendMode: "overlay",
               }}
             />
+            {isPastEvent && (
+              <div className="absolute inset-0 bg-[#0d0d0d]/60 flex items-center justify-center">
+                <span className="text-[20px] lg:text-[32px] font-[family-name:var(--font-display)] text-[#7aad3a] uppercase tracking-[0.15em] border-2 border-[#7aad3a] px-6 py-3 rounded-sm" style={{ fontFeatureSettings: '"ss01", "cv01"' }}>
+                  sold out
+                </span>
+              </div>
+            )}
           </div>
         </div>
 
         <div className="space-y-6" data-reveal data-reveal-delay="1">
           <p className="text-[10px] font-[family-name:var(--font-mono)] text-[#7aad3a] uppercase tracking-[0.15em]">
-            next up
+            {isPastEvent ? "last show" : "next up"}
           </p>
           <h2
             className="text-[40px] lg:text-[80px] font-[family-name:var(--font-display)] text-[#f0ede6] leading-[0.9] tracking-[-0.02em]"
@@ -118,7 +131,7 @@ export function EventCountdown() {
             {featuredEvent.city} / {featuredEvent.country}
           </p>
 
-          {!ready || remaining ? (
+          {!isPastEvent && !ready || remaining ? (
             <div className="flex gap-4 sm:gap-6">
               {units.map((unit) => (
                 <div
@@ -137,11 +150,7 @@ export function EventCountdown() {
                 </div>
               ))}
             </div>
-          ) : (
-            <p className="text-[11px] font-[family-name:var(--font-mono)] text-[#7aad3a] uppercase tracking-[0.15em]">
-              happening now
-            </p>
-          )}
+          ) : null}
 
           {!showTicketButton && featuredEvent.generalTicketsMessage && (
             <p className="text-[11px] font-[family-name:var(--font-mono)] text-[#7aad3a] uppercase tracking-[0.12em]">

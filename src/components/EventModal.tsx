@@ -102,6 +102,8 @@ export function EventModal() {
   const showTicketButton =
     featuredEvent.generalTicketsStatus === "available";
 
+  const isPastEvent = featuredEvent.generalTicketsStatus === "sold-out";
+
   const cta = showTicketButton ? (
     isInternalHref(featuredEvent.ticketUrl) ? (
       <Link
@@ -121,6 +123,10 @@ export function EventModal() {
         {featuredEvent.ctaLabel} ↗
       </a>
     )
+  ) : isPastEvent ? (
+    <Link href="/shows" className={ctaClassName} onClick={dismiss}>
+      view all shows ↗
+    </Link>
   ) : null;
 
   return (
@@ -164,7 +170,7 @@ export function EventModal() {
         <div className="relative -mt-16 space-y-4 px-6 pb-8 pt-2">
           <div className="flex items-center justify-between gap-4">
             <p className="text-[10px] font-[family-name:var(--font-mono)] text-[#7aad3a] uppercase tracking-[0.15em]">
-              next up
+              {isPastEvent ? "recent show" : "next up"}
             </p>
             <button
               ref={closeRef}
